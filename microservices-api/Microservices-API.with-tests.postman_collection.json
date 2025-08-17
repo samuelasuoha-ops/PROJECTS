@@ -1,0 +1,133 @@
+{
+  "info": {
+    "name": "Microservices API (Flask + MongoDB) \u2014 With Tests",
+    "_postman_id": "c9c4b2b2-739480",
+    "description": "Collection with automated tests for the Flask + MongoDB microservices API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.20250817@example.com\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/users",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "users"
+          ]
+        },
+        "description": "Create a new user and run assertions."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Basic response checks",
+              "pm.test('Status is 201 Created', function () {",
+              "  pm.response.to.have.status(201);",
+              "});",
+              "",
+              "const json = pm.response.json();",
+              "pm.test('Response has success message', function () {",
+              "  pm.expect(json).to.have.property('message');",
+              "});",
+              "",
+              "// Store the request email for later verification",
+              "const reqBody = pm.request.body.raw ? JSON.parse(pm.request.body.raw) : {};",
+              "pm.environment.set('last_email', reqBody.email || '');",
+              "",
+              "// Chain a GET request to verify the created user is returned",
+              "pm.sendRequest({",
+              "  url: pm.environment.get('base_url') + '/api/users',",
+              "  method: 'GET'",
+              "}, function (err, res) {",
+              "  pm.test('Follow-up GET returns 200', function () {",
+              "    pm.expect(err).to.be.null;",
+              "    pm.expect(res).to.have.property('code', 200);",
+              "  });",
+              "  if (!err) {",
+              "    try {",
+              "      const data = res.json();",
+              "      pm.test('Users list is an array', function () {",
+              "        pm.expect(Array.isArray(data)).to.be.true;",
+              "      });",
+              "      const found = data.some(u => u && u.email === pm.environment.get('last_email'));",
+              "      pm.test('Newly created user is present in GET /api/users', function () {",
+              "        pm.expect(found).to.be.true;",
+              "      });",
+              "    } catch (e) {",
+              "      pm.test('GET response is valid JSON', function () {",
+              "        pm.expect.fail('Invalid JSON in follow-up GET');",
+              "      });",
+              "    }",
+              "  }",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Get Users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/users",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "users"
+          ]
+        },
+        "description": "Fetch all users and verify structure."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status is 200 OK', function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "",
+              "let data;",
+              "pm.test('Response is JSON', function () {",
+              "  data = pm.response.json();",
+              "  pm.expect(data).to.be.an('array');",
+              "});",
+              "",
+              "// Optional check: if last_email exists, verify it appears in the list",
+              "const lastEmail = pm.environment.get('last_email');",
+              "if (lastEmail) {",
+              "  const found = data.some(u => u && u.email === lastEmail);",
+              "  pm.test('List contains the previously created user', function () {",
+              "    pm.expect(found).to.be.true;",
+              "  });",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    }
+  ]
+}

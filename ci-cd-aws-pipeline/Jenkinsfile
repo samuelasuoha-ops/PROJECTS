@@ -1,0 +1,42 @@
+pipeline {
+  agent any
+  environment {
+    IMAGE_NAME = "python-ci-api"
+    REGISTRY = "your-registry.example.com" // optional
+  }
+  stages {
+    stage('Checkout') {
+      steps { checkout scm }
+    }
+    stage('Build & Test') {
+      steps {
+        sh '''
+          python -V || true
+          docker --version
+          echo "Run unit tests here if present"
+        '''
+      }
+    }
+    stage('Docker Build') {
+      steps { sh 'docker build -t ${IMAGE_NAME}:$BUILD_NUMBER .' }
+    }
+    stage('Push (optional)') {
+      when { expression { return false } } // enable when registry configured
+      steps {
+        sh '''
+          echo "Login & push to registry here"
+          # docker tag ${IMAGE_NAME}:$BUILD_NUMBER ${REGISTRY}/${IMAGE_NAME}:$BUILD_NUMBER
+          # docker push ${REGISTRY}/${IMAGE_NAME}:$BUILD_NUMBER
+        '''
+      }
+    }
+    stage('Deploy (manual)') {
+      steps {
+        echo 'Use SSH or AWS CLI to deploy. See deploy/ scripts.'
+      }
+    }
+  }
+  post {
+    always { echo 'Pipeline completed.' }
+  }
+}

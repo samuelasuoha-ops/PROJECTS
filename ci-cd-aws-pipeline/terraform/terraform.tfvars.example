@@ -1,0 +1,11 @@
+# Example values — copy to terraform.tfvars and edit
+region            = "eu-west-1"
+app_name          = "python-ci-api"
+ecr_repo_name     = "python-ci-api"
+cluster_name      = "demo-cluster"
+desired_count     = 1
+image_uri         = "123456789012.dkr.ecr.eu-west-1.amazonaws.com/python-ci-api:latest"
+
+# VPC CIDR and public subnets
+vpc_cidr           = "10.0.0.0/16"
+public_subnet_cidrs = ["10.0.1.0/24", "10.0.2.0/24"]

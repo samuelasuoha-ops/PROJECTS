@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Responsive Site • Home</title>
+  <meta name="description" content="Accessible, fast, and responsive website starter." />
+  <link rel="preload" as="image" href="assets/hero-1200.jpg" imagesrcset="assets/hero-800.jpg 800w, assets/hero-1200.jpg 1200w" imagesizes="100vw">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <a href="/" class="logo" aria-label="Home">☀️ Brand</a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav id="nav" class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="hero-text">
+          <h1 id="hero-title">Fast, Accessible, Responsive</h1>
+          <p>Built with semantic HTML, modern CSS, and progressive enhancement.</p>
+          <a class="btn" href="blog.html">Read the blog</a>
+        </div>
+        <picture>
+          <source srcset="assets/hero-1200.jpg" media="(min-width: 900px)">
+          <img src="assets/hero-800.jpg" alt="Abstract colorful background" width="1200" height="800" loading="eager" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="features" aria-labelledby="features-title">
+      <div class="wrap">
+        <h2 id="features-title">Why this starter?</h2>
+        <ul class="grid">
+          <li><h3>Semantic</h3><p>Landmarks, headings, labels & skip link.</p></li>
+          <li><h3>Responsive</h3><p>Fluid type, CSS Grid/Flex, media queries.</p></li>
+          <li><h3>Performant</h3><p>Lean JS, optimized images, no heavy libs.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <h2 id="contact-title">Contact</h2>
+        <form id="contactForm" method="post" action="/api/contact" novalidate>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" autocomplete="name" required />
+            <span class="error" id="name-error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+            <span class="error" id="email-error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <span class="error" id="message-error" aria-live="polite"></span>
+          </div>
+          <button type="submit" class="btn">Send</button>
+          <p class="success" id="form-success" hidden role="status">Thanks! Your message was sent.</p>
+          <p class="error" id="form-failure" hidden role="alert">Sorry—something went wrong.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>&copy; <span id="year"></span> Your Name. <a href="blog.html">Blog</a></p>
+    </div>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>

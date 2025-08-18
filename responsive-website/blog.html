@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Responsive Site • Blog</title>
+  <meta name="description" content="Articles, tutorials, and notes." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="logo">☀️ Brand</a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav id="nav" class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="blog.html" aria-current="page">Blog</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap flow">
+    <header class="page-header">
+      <h1>Blog</h1>
+      <p class="muted">Long-form notes, tutorials, and updates.</p>
+    </header>
+
+    <article class="card">
+      <header>
+        <h2><a href="articles/sample-article.html">Designing a Fast, Accessible Landing Page</a></h2>
+        <p class="muted"><time datetime="2025-08-01">1 Aug 2025</time> · 6 min read</p>
+      </header>
+      <p>How I structure semantic HTML, layer CSS progressively, and sprinkle in just enough JavaScript—without harming performance.</p>
+      <p><a class="btn btn-secondary" href="articles/sample-article.html" aria-label="Read article: Designing a Fast, Accessible Landing Page">Read more</a></p>
+    </article>
+
+    <!-- Duplicate <article> blocks for more posts -->
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>&copy; <span id="year"></span> Your Name.</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js" defer></script>
+</body>
+</html>

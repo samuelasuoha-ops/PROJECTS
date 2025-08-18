@@ -1,0 +1,11 @@
+{
+  "name": "Responsive Starter",
+  "short_name": "Starter",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0c10",
+  "theme_color": "#66fcf1",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

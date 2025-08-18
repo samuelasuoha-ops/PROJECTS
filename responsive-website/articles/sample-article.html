@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Designing a Fast, Accessible Landing Page</title>
+  <meta name="description" content="An opinionated guide to shipping fast sites with great UX." />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="canonical" href="../blog.html" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="../index.html" class="logo">☀️ Brand</a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav id="nav" class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../blog.html" aria-current="page">Blog</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap prose">
+    <article>
+      <header class="article-header">
+        <h1>Designing a Fast, Accessible Landing Page</h1>
+        <p class="muted"><time datetime="2025-08-01">1 Aug 2025</time> · 6 min read</p>
+      </header>
+
+      <p>Performance, accessibility, and maintainability go hand-in-hand. This article shows a practical approach to ship all three without any frameworks.</p>
+      <h2>Start with semantics</h2>
+      <p>Use landmark elements (<code>header</code>, <code>nav</code>, <code>main</code>, <code>footer</code>), descriptive headings, labels, and skip links. These make your content navigable for assistive tech.</p>
+      <h2>Layer CSS progressively</h2>
+      <ul>
+        <li>Prefer <strong>Flexbox</strong> and <strong>Grid</strong> to complex floats.</li>
+        <li>Use <code>clamp()</code> for fluid typography.</li>
+        <li>Respect user preferences, like <code>prefers-reduced-motion</code> and <code>prefers-color-scheme</code>.</li>
+      </ul>
+      <h2>Enhance with JS</h2>
+      <p>Use JavaScript for progressive enhancement only: focus traps for modals / menus, accessible toggles, and smooth scrolling that respects motion preferences.</p>
+
+      <hr />
+      <p><a class="btn" href="../blog.html">← Back to Blog</a></p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>&copy; <span id="year"></span> Your Name.</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js" defer></script>
+</body>
+</html>

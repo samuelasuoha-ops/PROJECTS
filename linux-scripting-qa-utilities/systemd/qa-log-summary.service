@@ -1,0 +1,8 @@
+[Unit]
+Description=QA Daily Log Summary
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -lc '/opt/linux-qa-utilities/scripts/log_parse.sh --config /opt/linux-qa-utilities/config/summary.conf'
+User=root

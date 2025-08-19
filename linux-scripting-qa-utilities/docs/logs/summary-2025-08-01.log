@@ -1,0 +1,4 @@
+2025-08-01 00:12:00 ERROR something bad happened
+2025-08-01 00:13:00 WARN low disk space
+2025-08-01 01:00:00 CRITICAL kernel panic
+2025-08-01 02:00:00 INFO ok

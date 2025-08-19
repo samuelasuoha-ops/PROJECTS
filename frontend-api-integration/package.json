@@ -1,0 +1,44 @@
+{
+  "name": "frontend-api-integration",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server/dev-server.js",
+    "test": "jest --runInBand",
+    "test:ci": "jest --ci --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "prepare": "playwright install --with-deps"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.46.1",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "extensionsToTreatAsEsm": [
+      ".js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "mjs",
+      "cjs",
+      "json"
+    ],
+    "roots": [
+      "<rootDir>/__tests__"
+    ],
+    "collectCoverageFrom": [
+      "js/**/*.js"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov"
+    ]
+  }
+}

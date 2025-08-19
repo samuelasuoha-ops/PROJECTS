@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Front-end & API</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="logo" href="/">FE&API</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+      <ul id="nav-menu" class="nav-menu" data-collapsed="true">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="container">
+    <section class="card">
+      <h1>Contact</h1>
+      <form id="contact-form" class="form" novalidate>
+        <div class="field">
+          <label for="c-name">Name</label>
+          <input id="c-name" name="name" type="text" required placeholder="Your name">
+          <small class="error" id="c-name-error" aria-live="polite"></small>
+        </div>
+        <div class="field">
+          <label for="c-email">Email</label>
+          <input id="c-email" name="email" type="email" required placeholder="you@example.com">
+          <small class="error" id="c-email-error" aria-live="polite"></small>
+        </div>
+        <div class="field">
+          <label for="c-message">Message</label>
+          <textarea id="c-message" name="message" rows="5" required placeholder="How can we help?"></textarea>
+          <small class="error" id="c-message-error" aria-live="polite"></small>
+        </div>
+        <button class="btn" type="submit">Send</button>
+        <div class="notice" id="contact-status" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Front-end & API Integration</p>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

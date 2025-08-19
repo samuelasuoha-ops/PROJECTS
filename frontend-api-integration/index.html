@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Front-end & API Integration</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="logo" href="/">FE&API</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+      <ul id="nav-menu" class="nav-menu" data-collapsed="true">
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="container">
+    <section class="card">
+      <h1>Welcome</h1>
+      <p>This demo shows a responsive UI that talks to a REST API for authentication and data rendering.</p>
+    </section>
+
+    <section class="grid two">
+      <article class="card">
+        <h2>Sign in</h2>
+        <form id="login-form" class="form" novalidate>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required autocomplete="username" placeholder="demo@user.com">
+            <small class="error" id="email-error" aria-live="polite"></small>
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" required autocomplete="current-password" placeholder="password123">
+            <small class="error" id="password-error" aria-live="polite"></small>
+          </div>
+          <button id="login-btn" type="submit" class="btn">Sign in</button>
+          <p class="help">Use <code>demo@user.com</code> / <code>password123</code></p>
+          <div class="notice" id="login-status" role="status" aria-live="polite"></div>
+        </form>
+      </article>
+
+      <article class="card">
+        <h2>Items</h2>
+        <p id="whoami" class="muted">Not signed in.</p>
+        <div class="row">
+          <button id="load-items" class="btn" disabled>Load Items</button>
+          <button id="logout-btn" class="btn secondary" hidden>Logout</button>
+        </div>
+        <ul id="items-list" class="list" aria-label="Items"></ul>
+
+        <form id="add-item-form" class="form row" hidden>
+          <div class="field">
+            <label for="item-name">Item name</label>
+            <input id="item-name" name="name" type="text" placeholder="New item name">
+          </div>
+          <button class="btn" type="submit">Add Item</button>
+        </form>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Front-end & API Integration</p>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
